@@ -1,0 +1,67 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f9f9f9; /* Set background color for the entire page */
+}
+
+.header, .footer {
+    background-color: #f3f3f3;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar a {
+    margin: 0 15px;
+    color: #333;
+    text-decoration: none;
+}
+
+.feedback-form {
+    width: 50%;
+    margin: 50px auto; /* Center the form horizontally and add vertical margin */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.feedback-form label,
+.feedback-form input,
+.feedback-form textarea,
+.feedback-form button {
+    display: block; /* Display form elements as block for easier styling */
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.feedback-form label {
+    font-weight: bold;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.feedback-form textarea {
+    resize: vertical; /* Allow vertical resizing of the textarea */
+}
+
+.feedback-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition on hover */
+}
+
+.feedback-form button:hover {
+    background-color: #0056b3; /* Darken the background color on hover */
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealHub - Feedback</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo"><i class="fas fa-capsules"></i>HealHub</a>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="feedback.html" class="active">Feedback</a>
+    </nav>
+</header>
+
+<section class="feedback" id="feedback">
+    <h1 class="heading">Give Us Your <span>Feedback</span></h1>
+    <div class="feedback-form">
+        <form id="feedbackForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            
+            <button type="submit" class="btn submit">Submit</button>
+        </form>
+    </div>
+</section>
+
+<footer class="footer">
+    <!-- Footer Content Here -->
+</footer>
+
+<a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
+
+<!-- JavaScript for form submission handling -->
+<script>
+document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    // Perform AJAX request or form submission handling here
+    alert('Feedback submitted successfully!'); // For demonstration purposes
+    this.reset(); // Reset the form after submission
+});
+</script>
+
+</body>
+</html>
