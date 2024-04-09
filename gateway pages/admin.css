@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('medicine.jpeg'); /* Add your background image file */
+    background-size: cover;
+    background-position: center;
+    color: #100f0f; /* Change text color to white */
+}
+
+.container {
+    width: 50%;
+    margin: 100px auto; /* Center alignment */
+    background-color: rgba(235, 235, 235, 0.8); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.task {
+    margin-bottom: 20px;
+}
+
+.task label {
+    font-weight: bold;
+}
+
+.task input[type="text"] {
+    width: calc(100% - 20px); /* Adjusted width to fit within container */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    background-color: #f8f9fa; /* Light gray background color */
+}
+
+.task input[type="submit"] {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task input[type="submit"]:hover {
+    background-color: #0056b3;
+}
