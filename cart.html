@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealHub - Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo"><i class="fas fa-capsules"></i>HealHub</a>
+    <nav class="navbar">
+        <a href="index.html">home</a>
+        <a href="cart.html" class="active">Cart</a>
+    </nav>
+</header>
+
+<section class="cart" id="cart">
+    <h1 class="heading">Your <span>Cart</span></h1>
+    <div class="cart-container">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vitamins</td>
+                    <td>
+                        <select class="quantity-select" data-price="15">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </td>
+                    <td>$<span class="price">15</span></td>
+                    <td>$<span class="total-price">30</span></td>
+                    <td><button class="btn remove">Remove</button></td>
+                </tr>
+                <!-- Repeat for each product -->
+            </tbody>
+        </table>
+        <div class="cart-summary">
+            <h2>Summary</h2>
+            <p>Total Items: <span id="total-items">1</span></p>
+            <p>Total Price: <span id="total-price">$30</span></p>
+            <button class="btn checkout">Checkout</button>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <!-- Footer Content Here -->
+</footer>
+
+<a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
+
+<script>
+document.querySelectorAll('.quantity-select').forEach(selectElement => {
+    selectElement.addEventListener('change', (event) => {
+        const row = event.target.closest('tr');
+        const price = parseFloat(row.querySelector('.price').textContent);
+        const quantity = parseInt(event.target.value, 10);
+        const total = price * quantity;
+        row.querySelector('.total-price').textContent = total.toFixed(2);
+
+        // Update total items and total price
+        updateSummary();
+    });
+});
+
+function updateSummary() {
+    let totalItems = 0;
+    let totalPrice = 0;
+    document.querySelectorAll('.quantity-select').forEach(selectElement => {
+        const quantity = parseInt(selectElement.value, 10);
+        totalItems += quantity;
+
+        const row = selectElement.closest('tr');
+        const total = parseFloat(row.querySelector('.total-price').textContent);
+        totalPrice += total;
+    });
+
+    document.getElementById('total-items').textContent = totalItems;
+    document.getElementById('total-price').textContent = `$${totalPrice.toFixed(2)}`;
+}
+
+function initializeCart() {
+    document.querySelectorAll('.quantity-select').forEach(selectElement => {
+        const event = new Event('change');
+        selectElement.dispatchEvent(event);
+    });
+}
+
+window.onload = initializeCart;
+</script>
+
+</body>
+</html>
