@@ -1,67 +1,113 @@
-/* General Styles */
+/* General body styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f8;
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f9f9f9; /* Set background color for the entire page */
 }
 
-.header, .footer {
-    background-color: #f3f3f3;
-    padding: 10px 0;
+/* Header styles */
+header {
+    background-color: #bc5b35; /* Orange color for header */
+    color: white;
+    padding: 10px 20px;
     text-align: center;
 }
 
-.navbar a {
-    margin: 0 15px;
-    color: #333;
+.logo {
+    color: white;
     text-decoration: none;
-}
-
-.feedback-form {
-    width: 50%;
-    margin: 50px auto; /* Center the form horizontally and add vertical margin */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-}
-
-.feedback-form label,
-.feedback-form input,
-.feedback-form textarea,
-.feedback-form button {
-    display: block; /* Display form elements as block for easier styling */
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-.feedback-form label {
+    font-size: 24px;
     font-weight: bold;
 }
 
-.feedback-form input,
+.navbar {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: normal;
+}
+
+/* Active link style */
+.navbar a.active {
+    background-color: #e65100; /* Darker orange for active links */
+    border-radius: 5px;
+}
+
+/* Feedback section styling */
+.feedback {
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+.heading {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.feedback-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
 .feedback-form textarea {
+    width: 100%;
     padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.feedback-form textarea {
-    resize: vertical; /* Allow vertical resizing of the textarea */
-}
-
-.feedback-form button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+/* Button styling */
+.btn.submit {
+    background-color: #bc5b35; /* Orange color for buttons */
+    color: white;
     border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Add a smooth transition on hover */
+    border-radius: 4px;
+    width: 100%;
+    display: block;
 }
 
-.feedback-form button:hover {
-    background-color: #0056b3; /* Darken the background color on hover */
+.btn.submit:hover {
+    background-color: #a45030; /* Slightly darker orange for button hover */
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #bc5b35; /* Orange footer */
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Gold Stars styling */
+.gold-stars {
+    color: #FFD700; /* Gold color */
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.gold-stars .fa-star {
+    margin-right: 5px;
 }
