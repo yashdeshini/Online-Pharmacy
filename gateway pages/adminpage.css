@@ -20,52 +20,35 @@ body {
 
 .container {
     max-width: 800px;
-    margin: 0 auto; /* Center the container */
+    margin: 0px auto; /* Center the container */
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+h1 {
     text-align: center;
-    margin-bottom: 30px;
-    color: #333;
-}
-
-.form-group {
     margin-bottom: 20px;
 }
 
-label {
-    display: block;
-    margin-bottom: 10px;
-    color: #555;
+.task {
+    margin-bottom: 20px;
 }
-
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 10px; /* Equal spacing */
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-}
-
-button {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 20px; /* Equal spacing */
+.button {
+    display: inline-block;
+    padding: 5px 100px; /* Adjusted padding for larger buttons */
     background-color: #007bff;
     color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+    border-radius: 4px;
     transition: background-color 0.3s ease;
+    text-align: center; /* Center the text horizontally */
+    box-sizing: border-box;
 }
 
-button:hover {
+.button:hover {
     background-color: #0056b3;
 }
 

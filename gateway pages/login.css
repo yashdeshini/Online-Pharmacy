@@ -4,27 +4,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa; /* Light gray background */
-    background-image: url('/Users/linnettuscano/Desktop/linnet/medicine.jpeg'); /* Path to your background image */
+    background-image: url('medicine.jpeg'); /* Path to your background image */
     background-size: cover;
     background-position: center;
     filter: blur(0px); /* Adjust the blur intensity as needed */
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto; /* Center the container */
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-/* Centering everything */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,9 +19,10 @@ body {
 }
 
 .container {
-    max-width: 400px;
-    background-color: #fff;
-    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -59,6 +47,7 @@ input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 15px;
+    margin-bottom: 10px; /* Equal spacing */
     border: 1px solid #ccc;
     border-radius: 6px;
     background-color: #f9f9f9;
@@ -67,6 +56,7 @@ input[type="password"] {
 button {
     width: 100%;
     padding: 15px;
+    margin-bottom: 20px; /* Equal spacing */
     background-color: #007bff;
     color: #fff;
     border: none;

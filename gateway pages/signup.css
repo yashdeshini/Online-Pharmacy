@@ -1,0 +1,62 @@
+/* Resetting default browser styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9f5; /* Light gray background */
+    min-height: 100vh; /* Set minimum height of body to full viewport height */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    background-image: url('medicine.jpeg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+}
+
+.signup-container {
+    max-width: 300px; /* Smaller max-width for signup container */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 60px 60px; /* Reduced padding */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px; /* Adjusted font-size */
+    color: #333; /* Dark gray text color */
+    margin-bottom: 20px; /* Reduced margin */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Reduced margin */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="confirm-password"] { /* Adjusted selector for confirm-password input */
+    width: 100%; /* Adjusted width */
+    padding: 10px 50px; /* Reduced padding */
+    margin-bottom: 10px; /* Reduced margin */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 6px;
+    display: block; 
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px 40px; /* Reduced padding */
+    background-color: #007bff; /* Blue button color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block; /* Ensure the button is a block-level element */
+    margin: 0 auto; 
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+}
