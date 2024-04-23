@@ -16,8 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('myapp.urls')),
+    path('product/', include('product.urls')),
+    path('core/',include('product.urls')),
+    path('admin/', admin.site.urls),
+    path('accounts/', include('login.urls')),  # Assuming login URLs are in login.urls module
+    path('signup/', include('signup.urls')),    # Assuming signup URLs are in signup.urls module
+    path('forgot_password/', include('forgot_password.urls')),  # Include your forgot_password app's URLs
+    path('admin_tasks/', include('admin_tasks.urls')),
+    path('add_products/', include('add_products.urls')),
+    path('login/', RedirectView.as_view(url='/accounts/login/', permanent=False)),
 ]

@@ -8,21 +8,9 @@ class Gender(str, Enum):
     female = "Female"
 
 
-class Orders(str, Enum):
-    OrderId = ""
-    OrderDate = ""
-    OrderDetails = ""
-    OrderTotal = ""
-
-
-class Role(str, Enum):
-    admin = "Admin"
-    user = "User"
-    pharmacist = "Pharmacist"
-
-
 class Products(BaseModel):
-    _id: Optional[str] = str(uuid4())
+    _id: Optional[str] = uuid4()
+    ProductImage: str
     ProductName: str
     ProductPrice: float
     ProductManufactorer: str
@@ -33,36 +21,51 @@ class Products(BaseModel):
     ProductSideEffects: str
 
 
-class Users(BaseModel):
+class OrderProducts(BaseModel):
+    Products: Products
+    Quantity: int
+
+
+class Orders(str, Enum):
+    OrderId: Optional[str] = uuid4()
+    OrderDate: str
+    Total: float
+    Products: List[OrderProducts]
+
+
+class PersonDetails(BaseModel):
     _id: Optional[UUID] = uuid4()
-    UserEmail: str
+    Email: str
     ContactNumber: str
     FName: str
     LName: str
-    DateofBirth: str
-    UserAddress: str
-    UserCity: str
-    UserState: str
-    UserPincode: str
+    Street: str
+    City: str
+    State: str
+    Pincode: str
     Gender: Gender
     Orders: List[Orders]
 
 
-class Pharmacists(BaseModel):
-    _id: Optional[UUID] = uuid4()
-    PhmEmail: str
-    ContactNumber: str
-    FName: str
-    LName: str
-    PharmacyStore: str
-    PharmacyAddress: str
-    PharmacyCity: str
-    PharmacyState: str
-    PharmacyPincode: str
+class Users(PersonDetails):             #inheritance
+    DateofBirth: str
+    Gender: Gender
+    Orders: List[Orders]
 
 
-class UpdateUser(BaseModel):
-    first_name: Optional[str]
-    last_name: Optional[str]
-    #gender: Optional[Gender]
-    #roles: Optional[List[Role]]
+class Pharmacists(PersonDetails):
+    Store: str
+
+
+class CardDetails(BaseModel):
+    CardType: str
+    Owner: str
+    CardNumber: str
+    CardExpiry: str
+    CVV: str
+
+
+class Feedback(BaseModel):
+    Name: str
+    Email: str
+    Message: str

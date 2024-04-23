@@ -1,0 +1,72 @@
+/* Resetting default browser styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9f5; /* Light gray background */
+    min-height: 100vh; /* Set minimum height of body to full viewport height */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    background-image: url('/static/medicine.jpeg'); /* Background image URL */
+    background-size: cover;
+    background-position: center;
+}
+
+.signup-container {
+    max-width: 400px; /* Adjusted max-width for signup container */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px; /* Adjusted padding */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px; /* Adjusted font-size */
+    color: #333; /* Dark gray text color */
+    margin-bottom: 20px; /* Adjusted margin */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Adjusted margin */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="confirm-password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 20px; /* Adjusted margin */
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
