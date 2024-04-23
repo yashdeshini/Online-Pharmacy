@@ -19,3 +19,18 @@ def getUser(request):
 def getPharma(request):
     response = requests.get("http://127.0.0.1:8000/pharamacist/micheal")
     return JsonResponse(response.json(), safe=False)
+
+def paymentGateway(request):
+    
+    data = {
+        "CardType": "VISA",
+        "Owner": "XXXXX Wade",
+        "CardNumber": "XXXX401241555524",
+        "CardExpiry": "XX-XX",
+        "CVV": "XXX"
+    }
+    
+    # Send a GET request with the dictionary as query parameters
+    response = requests.get("http://127.0.0.1:8000/paymentCheck/", params = data)
+    return JsonResponse(response.json(), safe=False)
+

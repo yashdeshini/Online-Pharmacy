@@ -1,8 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from pymongo import MongoClient
-from models import Products, Users, Pharmacists
+from models import Products, Users, Pharmacists, CardDetails, Feedback
+from typing import Dict, Any
 import json
 from uuid import UUID, uuid4
+from datetime import datetime
 
 app = FastAPI()
 
@@ -10,6 +12,10 @@ DatabaseNname = "Online-Pharmacy"
 ProdColName = "ProductDetails"
 UserColName = "UserDetails"
 PharmacistColName = "PharmacistDetails"
+CardColName = "CardDetails"
+FeedbackColName = "Feedbacks"
+
+today = datetime.now().strftime("%m-%y")
 
 
 client = MongoClient('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5')
@@ -18,6 +24,8 @@ db = client[DatabaseNname]
 ProdCollection = db[ProdColName]
 UserCollection = db[UserColName]
 PharmacistCollection = db[PharmacistColName]
+CardCollection = db[CardColName]
+FeedbackCollection = db[FeedbackColName]
 
 
 # home
@@ -30,8 +38,8 @@ async def root():
 @app.get("/products")
 async def fetchProducts():
     data_cursor = ProdCollection.find()
+    
     data_list = []
-
     for document in data_cursor:
         document["_id"] = str(document["_id"])
         data_list.append(document)
@@ -60,7 +68,6 @@ async def fetchAllProducts(product_name: str):
     })
 
     data_list = []
-
     for document in data_cursor:
         document["_id"] = str(document["_id"])
         data_list.append(document)
@@ -89,7 +96,6 @@ async def getUserDetails(userEmail: str):
     })
     
     data_list = []
-
     for document in data_cursor:
         document["_id"] = str(document["_id"])
         data_list.append(document)
@@ -119,9 +125,60 @@ async def getUserDetails(phmEmail: str):
     })
 
     data_list = []
-
     for document in data_cursor:
         document["_id"] = str(document["_id"])
         data_list.append(document)
 
-    return list(data_list)  
+    return list(data_list)
+
+
+# payment check
+@app.get("/paymentCheck/")
+async def checkPayment(cardDetails: CardDetails):
+    
+    data_cursor = CardCollection.find({ "CardNumber": cardDetails.CardNumber })
+    
+    data_list = []
+    for document in data_cursor:
+        document["_id"] = str(document["_id"])
+        data_list.append(document)
+
+    repsonse = False
+
+    try:
+        if data_list[0]['Owner'] == cardDetails.Owner:
+            if datetime.strptime(data_list[0]['CardExpiry'], '%m-%y') >= datetime.strptime(today, '%m-%y') and data_list[0]['CardExpiry'] == cardDetails.CardExpiry:
+                if data_list[0]['CVV'] == cardDetails.CVV:
+                    repsonse = True
+    except Exception as e:
+        print(e)
+
+    return repsonse
+
+
+# cart add
+@app.get("/addCart/{product_id}")
+async def checkPayment(product_id: str):
+    
+    data_cursor = ProdCollection.find({ "_id": product_id })
+
+    data_list = []
+    for document in data_cursor:
+        document["_id"] = str(document["_id"])
+        data_list.append(document)
+
+    return data_list
+
+
+# feedback
+@app.post("/feedback/")
+async def checkPayment(feedback: Feedback):
+
+    response = False
+    try:
+        FeedbackCollection.insert_one(feedback.dict())
+        response = True
+    except Exception as e:
+        print(e)
+
+    return response

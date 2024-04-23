@@ -6,4 +6,5 @@ urlpatterns = [
     path('getProduct/', views.getProduct),
     path('getUser/', views.getUser),
     path('getPharma/', views.getPharma),
+    path('payment/', views.paymentGateway),
 ]
