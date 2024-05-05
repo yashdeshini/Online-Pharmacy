@@ -1,0 +1,212 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealHub - Feedback</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* General body styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #bc5b35; /* Orange color for header */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-weight: normal;
+        }
+
+        .navbar a.active {
+            background-color: #bc5b35; /* Darker orange for active links */
+            border-radius: 5px;
+        }
+
+        /* Feedback section styling */
+        .feedback {
+            max-width: 600px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+
+        .heading {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Form styling */
+        .feedback-form label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .feedback-form input[type="text"],
+        .feedback-form input[type="email"],
+        .feedback-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Button styling */
+        .btn.submit {
+            background-color: #bc5b35; /* Orange color for buttons */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            display: block;
+        }
+
+        .btn.submit:hover {
+            background-color: #bc5b35; /* Same orange color for button hover */
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #bc5b35; /* Orange footer */
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Star rating styles */
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .star-rating .fa {
+            color: #ddd; /* Default color of stars */
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .star-rating .fa.active,
+        .star-rating .fa:hover {
+            color: #FFD700; /* Gold color when active or hovered */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo"><i class="fas fa-capsules"></i>HealHub</a>
+    <nav class="navbar">
+        <a href="#" class="active">Home</a>
+        <a href="#">Cart</a>
+        <a href="#">Feedback</a>
+    </nav>
+</header>
+
+<section class="feedback" id="feedback">
+    <h1 class="heading">Give Us Your <span>Feedback</span></h1>
+    <div class="feedback-form">
+        <form action="{% url 'feedback' %}" method="POST">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+            
+            <!-- Star rating directly below the form fields -->
+            <div class="star-rating">
+                <span class="fa fa-star" data-value="1"></span>
+                <span class="fa fa-star" data-value="2"></span>
+                <span class="fa fa-star" data-value="3"></span>
+                <span class="fa fa-star" data-value="4"></span>
+                <span class="fa fa-star" data-value="5"></span>
+            </div>
+
+            <button type="submit" class="btn submit">Submit</button>
+        </form>
+    </div>
+</section>
+
+<footer class="footer">
+    <!-- Footer content here -->
+</footer>
+
+<script>
+document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    if (!name || !email || !message) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    console.log('Submitting feedback:', { name, email, message });
+    alert('Feedback submitted successfully!');
+    this.reset();
+});
+
+// Script to handle star rating
+document.querySelectorAll('.star-rating .fa').forEach(star => {
+    star.addEventListener('click', function() {
+        // Remove 'active' class from all stars
+        document.querySelectorAll('.star-rating .fa').forEach(sibling => {
+            sibling.classList.remove('active');
+        });
+
+        // Add 'active' class to the clicked star and all previous siblings
+        let currentStar = this;
+        while (currentStar) {
+            currentStar.classList.add('active');
+            currentStar = currentStar.previousElementSibling;
+        }
+
+        // Log the rating or send it to the server here
+        console.log(`Rated: ${this.getAttribute('data-value')}`);
+    });
+});
+</script>
+
+</body>
+</html>

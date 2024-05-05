@@ -1,0 +1,32 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Tasks - Online Pharmacy</title>
+    <link rel="stylesheet" href="{% static 'admin_tasks.css' %}">
+</head>
+<body>
+    <div class="background-image">
+        <div class="container">
+            <h1>Admin Tasks - Online Pharmacy</h1>
+            <form action="{% url 'admin_tasks' %}" method="post">
+                {% csrf_token %}
+                <div class="task">
+                    <a href="{% url 'add_products' %}" class="button">Add Product</a>
+                </div>
+                <div class="task">
+                    <a href="{% url 'delete_products' %}" class="button">Delete Product</a>
+                </div>
+                <div class="task">
+                    <a href="{% url 'update_price'%}" class="button">Update Product</a>
+                </div>
+                <!-- <div class="task">
+                    <a href="view_orders.html" class="button">View Orders</a>
+                </div> -->
+            </form>
+        </div>
+    </div>
+</body>
+</html>
