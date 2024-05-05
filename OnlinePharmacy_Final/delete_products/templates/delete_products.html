@@ -1,0 +1,27 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product - Online Pharmacy</title>
+    <link rel="stylesheet" href="{% static 'delete_products.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Product</h1>
+        <form action="{% url 'delete_products' %}" method="POST">  
+            {% csrf_token %} 
+            <div>
+                <label for="product_id">Product ID:</label>
+                <input type="text" id="product_id" name="product_id" required>
+            </div>
+            <div>
+                <label for="confirmation">Type 'DELETE' to confirm:</label>
+                <input type="text" id="confirmation" name="confirmation" required>
+            </div>
+            <input type="submit" value="Delete Product">
+        </form>
+    </div> 
+</body>
+</html>

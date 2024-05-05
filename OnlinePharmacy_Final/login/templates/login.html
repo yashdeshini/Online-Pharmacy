@@ -1,0 +1,33 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Online Pharmacy</title>
+    <link rel="stylesheet" href="{% static 'touch.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %} <!-- CSRF token -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an Account? <a href="/signup/"> Signup</a>.</p>
+        <p>Forgot your password? <a href="/forgot_password/">Reset</a>.</p>
+        <div class="text-center">
+            <a href="{% url 'home' %}" class="btn w-100 h-100">Home</a>
+        </div>
+    </div>
+</body>
+</html>
+
